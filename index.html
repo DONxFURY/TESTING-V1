@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Popular Links & Domain Prices</title>
+</head>
+<body>
+  <h1>Popular Links</h1>
+  <ul id="popular-links"></ul>
+
+  <script>
+    fetch('https://raw.githubusercontent.com/YourUsername/YourRepo/main/links.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('popular-links');
+        data.forEach(link => {
+          const li = document.createElement('li');
+          li.innerHTML = `<strong>${link.url}</strong> - Clicks: ${link.clicks}<br>
+            Prices: Day $${link.prices.day}, Month $${link.prices.month}, Year $${link.prices.year}, 2 Years $${link.prices["2"]}, 10 Years $${link.prices["10"]}`;
+          container.appendChild(li);
+        });
+      })
+      .catch(err => console.error("Failed to load JSON:", err));
+  </script>
+</body>
+</html>
