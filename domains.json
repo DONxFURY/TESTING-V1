@@ -1,0 +1,184 @@
+{
+  "categories": [
+    {
+      "name": "High-Value Domains",
+      "range": "$5,000 – $50,000+",
+      "description": "These have strong commercial appeal, B2B buyers, repeat revenue potential, or high keyword value.",
+      "note": "Broad exact-match industrial and professional domains often attract real business buyers — that's why they can sell high.",
+      "color": "high-value",
+      "icon": "star",
+      "domains": [
+        {
+          "name": "OmniIndustrialSupplies.ca",
+          "description": "Industrial + brandable + B2B",
+          "price": "$8K – $25K+",
+          "badge": null
+        },
+        {
+          "name": "covralifttrucks.ca",
+          "description": "Niche equipment keyword",
+          "price": "$6K – $20K",
+          "badge": null
+        },
+        {
+          "name": "CanaQuipPackagingEquipment.ca",
+          "description": "B2B industrial specialization",
+          "price": "$8K – $30K",
+          "badge": null
+        },
+        {
+          "name": "CanaQuipWarehouseSupplies.ca",
+          "description": "Similar industrial appeal",
+          "price": "$8K – $30K",
+          "badge": null
+        },
+        {
+          "name": "CanaQuipShippingSupplies.ca",
+          "description": "Searchable keyword combo",
+          "price": "$6K – $20K",
+          "badge": null
+        },
+        {
+          "name": "BayAdelaideDental.ca",
+          "description": "Geo + profession = buyer market",
+          "price": "$5K – $18K",
+          "badge": null
+        },
+        {
+          "name": "WantItFinance.ca",
+          "description": "Finance + branding",
+          "price": "$5K – $15K",
+          "badge": null
+        },
+        {
+          "name": "EstateSorter.ca",
+          "description": "Clear software/branding niche",
+          "price": "$4K – $12K",
+          "badge": null
+        },
+        {
+          "name": "BuildOnWeb3.com",
+          "description": "Trending Web3/SaaS",
+          "price": "$5K – $15K",
+          "badge": "TRENDING"
+        },
+        {
+          "name": "SummitDigitalCommerce.ca",
+          "description": "Digital services SaaS potential",
+          "price": "$4K – $12K",
+          "badge": null
+        }
+      ]
+    },
+    {
+      "name": "Mid-Tier Domains",
+      "range": "$1,000 – $5,000",
+      "description": "Brandable, niche, consumer-friendly, or trending domains.",
+      "note": null,
+      "color": "mid-tier",
+      "icon": "chart-bar",
+      "domains": [
+        {
+          "name": "AirCodeUp.ca",
+          "description": "Tech/coding theme",
+          "price": "$2K – $6K",
+          "badge": null
+        },
+        {
+          "name": "CreaAi.ca",
+          "description": "AI + branding",
+          "price": "$2K – $8K",
+          "badge": "AI"
+        },
+        {
+          "name": "Trulocalmeatdelivery.ca",
+          "description": "Local food delivery",
+          "price": "$1.5K – $5K",
+          "badge": null
+        },
+        {
+          "name": "OurHomeApparel.ca",
+          "description": "Fashion/brandable",
+          "price": "$1.5K – $5K",
+          "badge": null
+        },
+        {
+          "name": "YogaGear.ca",
+          "description": "Direct product niche",
+          "price": "$1K – $4K",
+          "badge": null
+        },
+        {
+          "name": "NauticalCourses.ca",
+          "description": "Clear niche service",
+          "price": "$1K – $4K",
+          "badge": null
+        },
+        {
+          "name": "SonOfBrunch.ca",
+          "description": "Fun food branding",
+          "price": "$1K – $4K",
+          "badge": null
+        },
+        {
+          "name": "CityGirlStalk.ca",
+          "description": "Content / entertainment",
+          "price": "$1K – $4K",
+          "badge": null
+        }
+      ]
+    },
+    {
+      "name": "Fun / Viral / Brandable Names",
+      "range": "$500 – $3,000+",
+      "description": "Great for merch, social, micro-brands, or viral content — buyers often pay for personality and memorable names.",
+      "note": "Great for merch, social, micro-brands, or viral content — buyers often pay for personality and memorable names.",
+      "color": "fun-viral",
+      "icon": "fire",
+      "domains": [
+        {
+          "name": "Fuck-It.net",
+          "description": "Strong viral merch potential",
+          "price": "$2K – $8K+",
+          "badge": "VIRAL"
+        },
+        {
+          "name": "GrabbaQueen.ca",
+          "description": "Quirky brandable",
+          "price": "$1K – $4K",
+          "badge": null
+        },
+        {
+          "name": "EndureTheSuck.ca",
+          "description": "Motivational/fitness culture",
+          "price": "$1K – $3K",
+          "badge": null
+        },
+        {
+          "name": "Fifty-MissionCap.ca",
+          "description": "Sports/brand theme",
+          "price": "$1K – $3K",
+          "badge": null
+        },
+        {
+          "name": "TeddyBeezBurgerz.ca",
+          "description": "Fun food/merch theme",
+          "price": "$800 – $2,500",
+          "badge": null
+        },
+        {
+          "name": "BomberAthletics.ca",
+          "description": "Athletic merch",
+          "price": "$1K – $3K",
+          "badge": null
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalDomains": 24,
+    "totalValue": "$100K+",
+    "categoriesCount": 3,
+    "lastUpdated": "2023-10-15"
+  }
+}
