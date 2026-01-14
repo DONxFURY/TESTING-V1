@@ -24,107 +24,131 @@
             --danger: #ef4444;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --radius: 8px;
+            --safe-top: env(safe-area-inset-top);
+            --safe-bottom: env(safe-area-inset-bottom);
         }
         
         body {
             background-color: #f1f5f9;
             color: #334155;
             line-height: 1.6;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 16px;
         }
         
-        /* Header Styles */
+        /* Improved Touch Targets */
+        button, 
+        .filter-btn,
+        .cta-button,
+        .footer-links a {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Header - Mobile Optimized */
         header {
             background-color: white;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            padding: 0 0;
+            padding-top: var(--safe-top);
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 16px 0;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-weight: 700;
-            font-size: 24px;
+            font-size: 20px;
             color: var(--secondary);
         }
         
         .logo i {
             color: var(--primary);
+            font-size: 24px;
         }
         
         .tagline {
-            font-size: 14px;
+            font-size: 12px;
             color: #64748b;
             font-weight: 500;
         }
         
-        /* Hero Section */
+        /* Hero - Mobile First */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 80px 0;
+            padding: 40px 0;
             text-align: center;
-            border-radius: 0 0 var(--radius) var(--radius);
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+            position: relative;
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 16px;
+            line-height: 1.3;
+            padding: 0 12px;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 24px;
             opacity: 0.9;
+            padding: 0 16px;
         }
         
         .cta-button {
-            display: inline-block;
             background-color: var(--accent);
             color: var(--secondary);
-            padding: 15px 35px;
+            padding: 14px 28px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
             cursor: pointer;
+            border: none;
+            white-space: nowrap;
         }
         
         .cta-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
             background-color: #fbbf24;
         }
         
-        /* Domain Categories */
+        /* Domain Categories - Mobile Cards */
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
             color: var(--secondary);
             margin-bottom: 10px;
         }
@@ -133,6 +157,7 @@
             color: #64748b;
             max-width: 600px;
             margin: 0 auto;
+            padding: 0 16px;
         }
         
         .category-card {
@@ -140,20 +165,20 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             overflow: hidden;
-            margin-bottom: 50px;
+            margin-bottom: 32px;
             transition: transform 0.3s ease;
         }
         
         .category-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         .category-header {
-            padding: 25px 30px;
+            padding: 20px;
             color: white;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 12px;
         }
         
         .high-value .category-header {
@@ -169,21 +194,29 @@
         }
         
         .category-header h3 {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
         
         .price-range {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
+            align-self: flex-start;
         }
         
-        /* Domain Table */
+        /* Domain Table - Responsive */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
         .domain-table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px; /* Minimum width for table before scrolling */
         }
         
         .domain-table thead {
@@ -192,29 +225,32 @@
         }
         
         .domain-table th {
-            padding: 18px 15px;
+            padding: 16px 12px;
             text-align: left;
             font-weight: 600;
             color: var(--secondary);
+            font-size: 0.9rem;
         }
         
         .domain-table td {
-            padding: 20px 15px;
+            padding: 16px 12px;
             border-bottom: 1px solid #e2e8f0;
         }
         
-        .domain-table tbody tr:hover {
+        .domain-table tbody tr:active {
             background-color: #f8fafc;
         }
         
         .domain-name {
             font-weight: 700;
             color: var(--secondary);
-            font-size: 1.1rem;
+            font-size: 1rem;
+            word-break: break-word;
         }
         
         .domain-why {
             color: #475569;
+            font-size: 0.95rem;
         }
         
         .domain-price {
@@ -223,14 +259,51 @@
             white-space: nowrap;
         }
         
-        /* Stats Section */
+        /* Mobile Card View for Domains */
+        .mobile-domain-card {
+            display: none;
+            background: white;
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-domain-card .domain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        
+        .mobile-domain-card .domain-name {
+            font-size: 1.1rem;
+            margin-right: 8px;
+        }
+        
+        .mobile-domain-card .domain-price {
+            font-size: 1.1rem;
+        }
+        
+        .mobile-domain-card .domain-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        
+        .mobile-domain-card .badge {
+            margin-top: 4px;
+        }
+        
+        /* Stats Section - Mobile Stack */
         .stats {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
+            gap: 24px;
             background-color: white;
             border-radius: var(--radius);
-            padding: 40px 20px;
-            margin: 60px 0;
+            padding: 32px 20px;
+            margin: 40px 0;
             box-shadow: var(--shadow);
         }
         
@@ -239,43 +312,43 @@
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--primary);
             display: block;
             line-height: 1;
+            margin-bottom: 4px;
         }
         
         .stat-label {
             color: #64748b;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         
-        /* Footer */
+        /* Footer - Mobile Optimized */
         footer {
             background-color: var(--secondary);
             color: #cbd5e1;
-            padding: 50px 0 20px;
-            margin-top: 60px;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+            padding-bottom: calc(20px + var(--safe-bottom));
         }
         
         .footer-content {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
+            flex-direction: column;
+            gap: 32px;
             margin-bottom: 40px;
         }
         
         .footer-section {
-            flex: 1;
-            min-width: 250px;
+            width: 100%;
         }
         
         .footer-section h4 {
             color: white;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
         }
         
         .footer-links {
@@ -283,13 +356,16 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
             color: #94a3b8;
             text-decoration: none;
             transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .footer-links a:hover {
@@ -301,40 +377,183 @@
             padding-top: 20px;
             border-top: 1px solid #334155;
             color: #94a3b8;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
         
-        /* Responsive */
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
+            .container {
+                padding: 0 12px;
             }
             
             .domain-table {
-                display: block;
-                overflow-x: auto;
+                display: none; /* Hide table on mobile */
             }
             
-            .stats {
-                flex-direction: column;
-                gap: 30px;
+            .mobile-domain-card {
+                display: block; /* Show card view on mobile */
+            }
+            
+            .table-container {
+                overflow-x: visible;
             }
             
             .category-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
+            
+            .note-box {
+                margin: 16px;
+                padding: 16px;
+            }
+            
+            .hero {
+                padding: 32px 0;
+            }
+            
+            .cta-button {
+                padding: 16px 32px;
+                font-size: 1rem;
             }
         }
         
-        /* Badge for new/featured */
+        @media (min-width: 769px) {
+            .stats {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            
+            .footer-content {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .footer-section {
+                flex: 1;
+                min-width: 200px;
+            }
+            
+            .category-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .hero {
+                padding: 28px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+        
+        /* Controls - Mobile Friendly */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .search-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .search-box {
+            padding: 14px 16px;
+            padding-left: 44px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius);
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            pointer-events: none;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .filter-btn {
+            padding: 10px 16px;
+            background-color: white;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .filter-btn:active, .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Badges */
         .badge {
             display: inline-block;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            margin-left: 10px;
         }
         
         .badge-new {
@@ -361,100 +580,54 @@
         .note-box {
             background-color: #f0f9ff;
             border-left: 4px solid var(--primary);
-            padding: 20px;
-            margin: 20px 30px 0;
+            padding: 16px;
+            margin: 16px;
             border-radius: 0 var(--radius) var(--radius) 0;
-        }
-        
-        .note-box strong {
-            color: var(--primary);
+            font-size: 0.9rem;
         }
         
         /* Loading State */
         .loading {
             text-align: center;
-            padding: 60px;
+            padding: 40px;
             color: #64748b;
         }
         
         .loading i {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
             color: var(--primary);
         }
         
         .loading-message {
-            font-size: 1.1rem;
-        }
-        
-        /* Controls */
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .search-box {
-            padding: 12px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: var(--radius);
-            width: 300px;
             font-size: 1rem;
-            transition: all 0.3s ease;
         }
         
-        .search-box:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-        
-        .filter-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .filter-btn {
-            padding: 10px 20px;
-            background-color: white;
-            border: 2px solid #e2e8f0;
-            border-radius: var(--radius);
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        /* Admin Panel */
+        /* Admin Panel - Mobile Optimized */
         .admin-panel {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 20px;
-            width: 300px;
+            border-radius: 16px 16px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            padding: 24px;
             display: none;
             z-index: 1000;
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         
         .admin-toggle {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            right: 16px;
             background: var(--primary);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -462,10 +635,31 @@
             cursor: pointer;
             box-shadow: var(--shadow);
             z-index: 1001;
+            font-size: 1.2rem;
         }
         
-        .admin-toggle:hover {
-            background: var(--primary-dark);
+        .admin-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        /* Prevent horizontal scrolling */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Improved touch feedback */
+        button:active, .cta-button:active {
+            transform: scale(0.98);
+        }
+        
+        /* Keyboard navigation improvements */
+        button:focus-visible,
+        .cta-button:focus-visible,
+        .filter-btn:focus-visible,
+        .search-box:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
         }
     </style>
 </head>
@@ -481,11 +675,9 @@
                         <div class="tagline">Dynamic Data Loading</div>
                     </div>
                 </div>
-                <div>
-                    <button id="contactBtn" class="cta-button" style="padding: 10px 25px; font-size: 1rem;">
-                        <i class="fas fa-envelope"></i> Contact for Pricing
-                    </button>
-                </div>
+                <button id="contactBtn" class="cta-button" style="padding: 12px 20px; font-size: 0.95rem;">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </button>
             </div>
         </div>
     </header>
@@ -504,9 +696,12 @@
     <div class="container">
         <!-- Controls -->
         <div class="controls">
-            <input type="text" id="searchInput" class="search-box" placeholder="Search domains...">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="search-box" placeholder="Search domains...">
+            </div>
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Domains</button>
+                <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="high-value">High Value</button>
                 <button class="filter-btn" data-filter="mid-tier">Mid Tier</button>
                 <button class="filter-btn" data-filter="fun-viral">Fun/Viral</button>
@@ -516,7 +711,7 @@
         <!-- Loading State -->
         <div id="loading" class="loading">
             <i class="fas fa-spinner fa-spin"></i>
-            <div class="loading-message">Loading domain data from JSON...</div>
+            <div class="loading-message">Loading domain data...</div>
         </div>
         
         <!-- Domain Categories will be loaded here -->
@@ -552,7 +747,8 @@
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2023 DomainVault. Data loaded from domains.json | Last updated: <span id="lastUpdated"></span>
+                &copy; 2023 DomainVault. Data loaded from domains.json<br>
+                Last updated: <span id="lastUpdated"></span>
             </div>
         </div>
     </footer>
@@ -563,13 +759,16 @@
     </div>
     
     <div class="admin-panel" id="adminPanel">
-        <h3>Data Management</h3>
+        <h3 style="margin-bottom: 20px;">Data Management</h3>
         <div style="margin: 15px 0;">
-            <button id="reloadJsonBtn" class="cta-button" style="width: 100%; margin-bottom: 10px;">
+            <button id="reloadJsonBtn" class="cta-button" style="width: 100%; margin-bottom: 12px;">
                 <i class="fas fa-redo"></i> Reload from JSON
             </button>
-            <button id="clearCacheBtn" class="cta-button" style="width: 100%; margin-bottom: 10px; background-color: #64748b;">
+            <button id="clearCacheBtn" class="cta-button" style="width: 100%; margin-bottom: 12px; background-color: #64748b;">
                 <i class="fas fa-trash-alt"></i> Clear Cache
+            </button>
+            <button id="closeAdminBtn" class="cta-button" style="width: 100%; background-color: var(--danger);">
+                <i class="fas fa-times"></i> Close Panel
             </button>
         </div>
         <div style="margin-top: 20px; font-size: 0.9rem; color: #64748b;">
@@ -636,11 +835,11 @@
         // Show error message
         function showError(message) {
             domainContainer.innerHTML = `
-                <div style="background: #fee2e2; color: #dc2626; padding: 30px; border-radius: var(--radius); text-align: center;">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 15px;"></i>
-                    <h3>Error Loading Data</h3>
-                    <p>${message}</p>
-                    <button onclick="loadDomainData()" class="cta-button" style="margin-top: 20px;">
+                <div style="background: #fee2e2; color: #dc2626; padding: 24px; border-radius: var(--radius); text-align: center;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 12px;"></i>
+                    <h3 style="margin-bottom: 12px;">Error Loading Data</h3>
+                    <p style="margin-bottom: 20px;">${message}</p>
+                    <button onclick="loadDomainData()" class="cta-button">
                         <i class="fas fa-redo"></i> Try Again
                     </button>
                 </div>
@@ -678,9 +877,9 @@
             // If no results found
             if (domainContainer.children.length === 0 && searchInput.value) {
                 domainContainer.innerHTML = `
-                    <div style="text-align: center; padding: 50px; color: #64748b;">
-                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                        <h3>No domains found for "${searchInput.value}"</h3>
+                    <div style="text-align: center; padding: 40px; color: #64748b;">
+                        <i class="fas fa-search" style="font-size: 2.5rem; margin-bottom: 16px;"></i>
+                        <h3 style="margin-bottom: 12px;">No domains found for "${searchInput.value}"</h3>
                         <p>Try a different search term or clear the search.</p>
                     </div>
                 `;
@@ -706,15 +905,33 @@
                 return `<span class="badge ${badgeClasses[badgeType] || 'badge-featured'}">${badgeType}</span>`;
             }
             
-            // Build table rows
+            // Build table rows for desktop
             let tableRows = '';
+            // Build mobile cards for mobile
+            let mobileCards = '';
+            
             domains.forEach(domain => {
+                // Table row for desktop
                 tableRows += `
                     <tr>
                         <td class="domain-name">${domain.name}${getBadgeHTML(domain.badge)}</td>
                         <td class="domain-why">${domain.description}</td>
                         <td class="domain-price">${domain.price}</td>
                     </tr>
+                `;
+                
+                // Mobile card
+                mobileCards += `
+                    <div class="mobile-domain-card">
+                        <div class="domain-header">
+                            <div>
+                                <div class="domain-name">${domain.name}</div>
+                                ${getBadgeHTML(domain.badge)}
+                            </div>
+                            <div class="domain-price">${domain.price}</div>
+                        </div>
+                        <div class="domain-description">${domain.description}</div>
+                    </div>
                 `;
             });
             
@@ -742,6 +959,9 @@
                             ${tableRows}
                         </tbody>
                     </table>
+                    <div class="mobile-domain-cards">
+                        ${mobileCards}
+                    </div>
                 </div>
             `;
             
@@ -876,14 +1096,22 @@
         const adminPanel = document.getElementById('adminPanel');
         const reloadJsonBtn = document.getElementById('reloadJsonBtn');
         const clearCacheBtn = document.getElementById('clearCacheBtn');
+        const closeAdminBtn = document.getElementById('closeAdminBtn');
         
         adminToggle.addEventListener('click', () => {
-            adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
+            adminPanel.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeAdminBtn.addEventListener('click', () => {
+            adminPanel.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
         
         reloadJsonBtn.addEventListener('click', () => {
             loadDomainData();
             adminPanel.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
         
         clearCacheBtn.addEventListener('click', () => {
@@ -898,63 +1126,51 @@
                         renderStats();
                         updateLastUpdated();
                         adminPanel.style.display = 'none';
+                        document.body.style.overflow = 'auto';
                         alert('Cache cleared and data reloaded!');
                     });
             }
         });
         
-        // Close admin panel when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!adminPanel.contains(e.target) && !adminToggle.contains(e.target)) {
+        // Close admin panel when clicking outside on mobile
+        adminPanel.addEventListener('click', (e) => {
+            if (e.target === adminPanel) {
                 adminPanel.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
         
         // Initial load
         document.addEventListener('DOMContentLoaded', loadDomainData);
         
-        // Add animation to table rows
-        function addTableHoverEffects() {
-            setTimeout(() => {
-                document.querySelectorAll('.domain-table tbody tr').forEach(row => {
-                    row.addEventListener('mouseenter', function() {
-                        this.style.transform = 'scale(1.01)';
-                        this.style.transition = 'transform 0.2s ease';
-                    });
-                    
-                    row.addEventListener('mouseleave', function() {
-                        this.style.transform = 'scale(1)';
-                    });
-                });
-            }, 100);
-        }
-        
-        // Watch for DOM changes to add hover effects
-        const observer = new MutationObserver(() => {
-            addTableHoverEffects();
-        });
-        
-        observer.observe(domainContainer, { childList: true, subtree: true });
-        
-        // Add keyboard shortcuts
+        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
-            // Ctrl+R to refresh
-            if (e.ctrlKey && e.key === 'r') {
-                e.preventDefault();
-                loadDomainData();
-            }
-            
             // Escape to close admin panel
             if (e.key === 'Escape') {
                 adminPanel.style.display = 'none';
-            }
-            
-            // Ctrl+F to focus search
-            if (e.ctrlKey && e.key === 'f') {
-                e.preventDefault();
-                searchInput.focus();
+                document.body.style.overflow = 'auto';
             }
         });
+        
+        // Handle orientation change
+        window.addEventListener('orientationchange', () => {
+            // Add a small delay to ensure proper rendering after rotation
+            setTimeout(() => {
+                renderAllCategories();
+            }, 100);
+        });
+        
+        // Handle resize events
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                renderAllCategories();
+            }, 250);
+        });
+        
+        // Improve touch experience
+        document.addEventListener('touchstart', function() {}, {passive: true});
     </script>
 </body>
 </html>
