@@ -1,59 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nest Trending Links</title>
+<title>Resellable Domains</title>
 <style>
-  body { font-family: Arial, sans-serif; background: #111; color: #eee; padding: 20px; }
-  h1 { text-align: center; color: #0ff; }
-  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-  th, td { padding: 10px; border: 1px solid #0ff; text-align: center; }
-  th { background: #0a0a0a; }
-  tr:nth-child(even) { background: #1a1a1a; }
-  tr:hover { background: #0ff; color: #000; cursor: pointer; }
-  a { color: #0ff; text-decoration: none; }
+  body { background:#0d0d0d; color:#eee; font-family:sans-serif; }
+  h1 { text-align:center; color:#0ff; }
+  table { width:100%; border-collapse:collapse; margin-top:20px; }
+  th,td { padding:10px; border:1px solid #0ff; text-align:center; }
+  th { background:#111; }
+  tr:nth-child(even){background:#1a1a1a}
+  tr:hover {background:#0ff; color:#000;}
 </style>
 </head>
 <body>
-<h1>Trending Links & Domain Prices</h1>
-<table id="linksTable">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Domain</th>
-      <th>Upvotes</th>
-      <th>Day $</th>
-      <th>Month $</th>
-      <th>Year $</th>
-      <th>2 Years $</th>
-      <th>10 Years $</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
+<h1>Best Domains to Resell</h1>
+<table>
+<thead><tr><th>Domain</th><th>Score</th><th>Est Price ($)</th></tr></thead>
+<tbody id="domlist"></tbody>
 </table>
 
 <script>
-fetch('links.json') // Replace with your GitHub raw JSON link if hosted there
-  .then(res => res.json())
-  .then(data => {
-    const tbody = document.querySelector("#linksTable tbody");
-    data.forEach(link => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td><a href="${link.url}" target="_blank">${link.title.length>30?link.title.slice(0,30)+'...':link.title}</a></td>
-        <td>${link.domain}</td>
-        <td>${link.clicks}</td>
-        <td>${link.prices.day}</td>
-        <td>${link.prices.month}</td>
-        <td>${link.prices.year}</td>
-        <td>${link.prices["2"]}</td>
-        <td>${link.prices["10"]}</td>
-      `;
-      tbody.appendChild(tr);
-    });
-  })
-  .catch(err => console.error("Failed to load JSON:", err));
+fetch("links.json")
+.then(r => r.json())
+.then(data => {
+  const tbody = document.getElementById("domlist");
+  data.forEach(d => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${d.domain}</td>
+      <td>${d.score}</td>
+      <td>${d.estimated_resale}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+})
+.catch(e => console.error("Error loading JSON", e));
 </script>
 </body>
 </html>
