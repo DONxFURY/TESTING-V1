@@ -1,26 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Popular Links & Domain Prices</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nest Trending Links</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #111; color: #eee; padding: 20px; }
+  h1 { text-align: center; color: #0ff; }
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  th, td { padding: 10px; border: 1px solid #0ff; text-align: center; }
+  th { background: #0a0a0a; }
+  tr:nth-child(even) { background: #1a1a1a; }
+  tr:hover { background: #0ff; color: #000; cursor: pointer; }
+  a { color: #0ff; text-decoration: none; }
+</style>
 </head>
 <body>
-  <h1>Popular Links</h1>
-  <ul id="popular-links"></ul>
+<h1>Trending Links & Domain Prices</h1>
+<table id="linksTable">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Domain</th>
+      <th>Upvotes</th>
+      <th>Day $</th>
+      <th>Month $</th>
+      <th>Year $</th>
+      <th>2 Years $</th>
+      <th>10 Years $</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-  <script>
-    fetch('https://raw.githubusercontent.com/YourUsername/YourRepo/main/links.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('popular-links');
-        data.forEach(link => {
-          const li = document.createElement('li');
-          li.innerHTML = `<strong>${link.url}</strong> - Clicks: ${link.clicks}<br>
-            Prices: Day $${link.prices.day}, Month $${link.prices.month}, Year $${link.prices.year}, 2 Years $${link.prices["2"]}, 10 Years $${link.prices["10"]}`;
-          container.appendChild(li);
-        });
-      })
-      .catch(err => console.error("Failed to load JSON:", err));
-  </script>
+<script>
+fetch('links.json') // Replace with your GitHub raw JSON link if hosted there
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.querySelector("#linksTable tbody");
+    data.forEach(link => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><a href="${link.url}" target="_blank">${link.title.length>30?link.title.slice(0,30)+'...':link.title}</a></td>
+        <td>${link.domain}</td>
+        <td>${link.clicks}</td>
+        <td>${link.prices.day}</td>
+        <td>${link.prices.month}</td>
+        <td>${link.prices.year}</td>
+        <td>${link.prices["2"]}</td>
+        <td>${link.prices["10"]}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(err => console.error("Failed to load JSON:", err));
+</script>
 </body>
 </html>
